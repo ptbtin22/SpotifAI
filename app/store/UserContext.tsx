@@ -1,5 +1,5 @@
-// store/UserContext.tsx
 "use client";
+
 import { createContext, useContext, useEffect, useState } from "react";
 
 type UserProfile = {
@@ -25,6 +25,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         setUser(null);
       }
     };
+
     fetchUser();
   }, []);
 

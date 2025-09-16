@@ -10,7 +10,7 @@ const Navbar = () => {
   if (user === "loading") {
     return (
       <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
-        <h1 className="text-lg font-bold">SpotifAI</h1>
+        <h1 className="text-lg font-bold">Spotify</h1>
         <NavBarSkeleton />
       </nav>
     );
@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
-      <h1 className="text-lg font-bold">SpotifAI</h1>
+      <h1 className="text-lg font-bold">Spotify</h1>
 
       {user ? (
         <div className="flex items-center gap-3">

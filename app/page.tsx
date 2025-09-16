@@ -7,15 +7,15 @@ export default function Home() {
 
   if (!user) {
     return (
-      <>
+      <div className="">
         <h1>Login to use SpotifAI</h1>
-      </>
+      </div>
     );
   }
 
   return (
-    <div>
-      <h1>This is where magic happens!</h1>
+    <div className="rounded-lg bg-gray-900 h-full overflow-hidden">
+      {/* Content here */}
     </div>
   );
 }

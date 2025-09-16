@@ -6,7 +6,7 @@ export async function GET() {
   const hashed = await sha256(codeVerifier);
   const codeChallenge = base64encode(hashed);
 
-  const scope = "user-read-email user-read-private";
+  const scope = "user-read-email user-read-private user-read-recently-played";
   const redirectUri = process.env.NEXT_PUBLIC_REDIRECT_URI!;
   const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID!;
 
