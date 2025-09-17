@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import { ScrollArea } from "../ui/scroll-area";
 import type { RecentlyPlayedItem } from "@/app/types";
 import Image from "next/image";
+import LibraryItemSkeleton from "../skeletons/LibraryItemSkeleton";
 
 const Library = ({ collapsed }: { collapsed: boolean }) => {
   const [library, setLibrary] = useState<RecentlyPlayedItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchRecents = async () => {
+      setLoading(true);
       try {
         const response = await fetch("/api/spotify/recents");
         if (response.ok) {
@@ -18,6 +21,8 @@ const Library = ({ collapsed }: { collapsed: boolean }) => {
         }
       } catch (error) {
         console.error("Error fetching recents:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchRecents();
@@ -25,13 +30,17 @@ const Library = ({ collapsed }: { collapsed: boolean }) => {
 
   return (
     <ScrollArea className="h-full">
-      {library.map((item) => (
-        <LibraryItem
-          key={item.track.id + item.played_at}
-          collapsed={collapsed}
-          item={item}
-        />
-      ))}
+      {loading
+        ? Array.from({ length: 6 }).map((_, i) => (
+            <LibraryItemSkeleton key={i} collapsed={collapsed} />
+          ))
+        : library.map((item) => (
+            <LibraryItem
+              key={item.track.id + item.played_at}
+              collapsed={collapsed}
+              item={item}
+            />
+          ))}
     </ScrollArea>
   );
 };

@@ -11,7 +11,7 @@ import {
   ResizablePanel,
 } from "@/components/ui/resizable";
 import SideBar from "@/components/SideBar/SideBar";
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { ImperativePanelHandle } from "react-resizable-panels";
 
 const geistSans = Geist({
@@ -37,7 +37,7 @@ export default function RootLayout({
   function toggleSidebar() {
     if (!sidebarRef.current) return;
 
-    sidebarRef.current.resize(25); // same as your defaultSize
+    sidebarRef.current.resize(25);
     setCollapsed(false);
     setShowCreate(true);
   }
@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-hidden flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col`}
       >
         <UserProvider>
           <Navbar />
@@ -65,7 +65,7 @@ export default function RootLayout({
                   setShowCreate(size >= 25);
                 }}
               >
-                <div className="h-full px-2">
+                <div className="h-full pl-2 pr-1">
                   <SideBar
                     onShowSidebar={toggleSidebar}
                     collapsed={collapsed}
@@ -75,7 +75,7 @@ export default function RootLayout({
               </ResizablePanel>
               <ResizableHandle className="bg-gray-800 hover:bg-gray-500 transition-colors duration-150 w-0.5" />
               <ResizablePanel className="bg-gray-800">
-                <div className="h-full px-2">{children}</div>
+                <div className="h-full pl-1 pr-2">{children}</div>
               </ResizablePanel>
             </ResizablePanelGroup>
           </div>

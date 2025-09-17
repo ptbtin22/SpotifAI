@@ -23,8 +23,8 @@ const Navbar = () => {
       {user ? (
         <div className="flex items-center gap-3">
           <Image
-            src={user.images?.[0]?.url || "/default-profile.png"}
             alt={user.display_name}
+            src={user.images?.[0]?.url || "/default-profile.png"}
             width={40}
             height={40}
             className="rounded-full"

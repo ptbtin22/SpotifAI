@@ -37,7 +37,7 @@ const SideBar = ({
               {showCreate && <span className="hidden md:inline">Create</span>}
             </Button>
             <Maximize2
-              className="w-10 h-10 p-2 text-gray-400 cursor-pointer rounded-full 
+              className="size-9 p-2 text-gray-400 cursor-pointer rounded-full 
              hover:bg-gray-600 hover:text-white overflow-visible
              transition-colors duration-150 ease-in-out"
             />

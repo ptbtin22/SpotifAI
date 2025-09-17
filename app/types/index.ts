@@ -9,3 +9,10 @@ export type RecentlyPlayedItem = {
   };
   played_at: string;
 };
+
+export type UserProfile = {
+  display_name: string;
+  email: string;
+  id: string;
+  images: { url: string }[];
+};

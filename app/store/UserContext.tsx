@@ -1,13 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-
-type UserProfile = {
-  display_name: string;
-  email: string;
-  id: string;
-  images: { url: string }[];
-};
+import type { UserProfile } from "../types";
 
 type UserState = UserProfile | null | "loading";
 
